@@ -1,0 +1,42 @@
+.container {
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: row;
+  z-index: 1000;
+  border-radius: 6px;
+  padding: 1px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  transition: all 0.2s ease;
+  border: none;
+  padding: 2px;
+  border-radius: 3px;
+  background-color: transparent;
+}
+
+.arrow:first-child {
+  margin-right: 4px;
+}
+
+.arrow:hover img,
+.arrow:focus img {
+  filter: brightness(0) saturate(100%) invert(45%) sepia(85%) saturate(385%)
+    hue-rotate(121deg) brightness(97%) contrast(94%);
+}
+
+.arrow:active {
+  transform: scale(0.95);
+}
+
+.arrow:focus {
+  outline: none;
+}
