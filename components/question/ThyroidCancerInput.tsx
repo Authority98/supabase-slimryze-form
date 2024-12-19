@@ -49,9 +49,9 @@ export function ThyroidCancerInput(): JSX.Element {
     return (
       <DisqualifierScreen
         title="Important Health Information"
-        message="We notice you have a family history of thyroid cancer. For your safety, we need to take extra precautions."
-        recommendation="We recommend consulting with your healthcare provider before starting any weight loss medication, as your family history may require special consideration."
-        note="Your health and safety are our top priority!"
+        message="Thank you for taking the assessment. Based on your responses, we noticed that you have been diagnosed with thyroid cancer. For your safety, we're unable to recommend this medication, as managing thyroid cancer requires specialized care and consideration."
+        recommendation="We encourage you to consult with your healthcare provider to explore weight loss options that are safe and effective for you."
+        note="Your health and well-being are our top priority!"
       />
     );
   }
@@ -59,7 +59,7 @@ export function ThyroidCancerInput(): JSX.Element {
   return (
     <>
       <QuestionNumHeading questionNum={10}>
-        Do you have a family history of thyroid cancer? 🧬
+        Have you been diagnosed with thyroid cancer? 🧬
       </QuestionNumHeading>
       <QuestionBoxPara>Select one option</QuestionBoxPara>
       <span className={styles["choose-num"]}>

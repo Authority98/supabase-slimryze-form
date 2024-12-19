@@ -4,9 +4,9 @@ import styles from "./Question.module.css";
 
 type MedicationType =
   | "insulin"
-  | "blood-thinners"
-  | "corticosteroids"
-  | "beta-blockers";
+  | "metformin"
+  | "antidepressants"
+  | "corticosteroids";
 type DisqualifierType = "age" | MedicationType;
 
 type DisqualifierScreenProps = {
@@ -21,42 +21,42 @@ const MESSAGES = {
   insulin: {
     title: "Important Medical Information",
     message:
-      "We appreciate your honesty about taking insulin. For your safety, we cannot proceed with GLP-1 medications at this time.",
+      "Thank you for taking the assessment. Based on your responses, we noticed that you are currently taking insulin. For your safety, we're unable to recommend this medication, as managing insulin therapy requires specialized care and consideration.",
     recommendation:
-      "Since you're currently on insulin therapy, we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine the best approach for your specific situation.",
-    note: "Your safety is our top priority! 💙",
+      "We encourage you to consult with your healthcare provider to explore weight loss options that are safe and effective for you.",
+    note: "Your health and well-being are our top priority!",
   },
-  "blood-thinners": {
+  metformin: {
     title: "Important Medical Information",
     message:
-      "We appreciate your honesty about taking blood thinners. For your safety, we cannot proceed with GLP-1 medications at this time.",
+      "Thank you for taking the assessment. Based on your responses, we noticed that you are currently taking metformin. For your safety, we're unable to recommend this medication, as managing metformin therapy requires specialized care and consideration.",
     recommendation:
-      "Since you're on blood thinners (like Warfarin), we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine if any adjustments would make GLP-1s a safe option for you.",
-    note: "Your safety is our top priority! 💙",
+      "We encourage you to consult with your healthcare provider to explore weight loss options that are safe and effective for you.",
+    note: "Your health and well-being are our top priority!",
+  },
+  antidepressants: {
+    title: "Important Medical Information",
+    message:
+      "Thank you for taking the assessment. Based on your responses, we noticed that you are currently taking antidepressants. For your safety, we're unable to recommend this medication, as managing antidepressant therapy requires specialized care and consideration.",
+    recommendation:
+      "We encourage you to consult with your healthcare provider to explore weight loss options that are safe and effective for you.",
+    note: "Your health and well-being are our top priority!",
   },
   corticosteroids: {
     title: "Important Medical Information",
     message:
-      "We appreciate your honesty about taking corticosteroids. For your safety, we cannot proceed with GLP-1 medications at this time.",
+      "Thank you for taking the assessment. Based on your responses, we noticed that you are currently taking corticosteroids. For your safety, we're unable to recommend this medication, as managing corticosteroid therapy requires specialized care and consideration.",
     recommendation:
-      "Since you're on corticosteroids, we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine if any adjustments would make GLP-1s a safe option for you.",
-    note: "Your safety is our top priority! 💙",
-  },
-  "beta-blockers": {
-    title: "Important Medical Information",
-    message:
-      "We appreciate your honesty about taking beta-blockers. For your safety, we cannot proceed with GLP-1 medications at this time.",
-    recommendation:
-      "Since you're on beta-blockers, we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine if any adjustments would make GLP-1s a safe option for you.",
-    note: "Your safety is our top priority! 💙",
+      "We encourage you to consult with your healthcare provider to explore weight loss options that are safe and effective for you.",
+    note: "Your health and well-being are our top priority!",
   },
   age: {
-    title: "We Appreciate Your Interest!",
+    title: "Important Information",
     message:
-      "Thank you for wanting to join SlimRyze. However, our program is currently designed for individuals 18 and older.",
+      "Thank you for taking the assessment. Based on your responses, we noticed that you are under 18 years old. For your safety, we're unable to recommend this medication, as our program is designed for individuals 18 and older.",
     recommendation:
-      "We recommend consulting with your parents and healthcare provider about appropriate wellness options for your age group.",
-    note: "Please come back when you're 18!",
+      "We encourage you to consult with your healthcare provider to explore weight loss options that are safe and appropriate for your age group.",
+    note: "Your health and well-being are our top priority!",
   },
 };
 

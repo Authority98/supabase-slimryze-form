@@ -15,7 +15,7 @@ import { useState } from "react";
 import type { ObjectType } from "@/types";
 
 export function PregnancyInput(): JSX.Element {
-  const { errorMsg, setErrorMsg, handleQuestionNumUpdate } = useSharedStates();
+  const { errorMsg, setErrorMsg, handleOkClick } = useSharedStates();
   const { state, dispatch } = useQuestions();
   const { pregnancyStatus } = state;
   const error = (errorMsg as ObjectType).pregnancyStatus ?? "";
@@ -43,16 +43,16 @@ export function PregnancyInput(): JSX.Element {
     }
 
     dispatch({ type: SET_PREGNANCY_STATUS, payload: selectedOption });
-    setTimeout(() => handleQuestionNumUpdate(), 600);
+    setTimeout(() => handleOkClick(), 600);
   }
 
   if (showDisqualifier) {
     return (
       <DisqualifierScreen
         title="Important Health Information"
-        message="We notice you're currently pregnant or breastfeeding. For your safety and your baby's safety, we need to take extra precautions."
-        recommendation="We recommend waiting until after pregnancy and breastfeeding to start any weight loss medication. Please consult with your healthcare provider for safe weight management options during this time."
-        note="Your health and your baby's health are our top priority! 👶"
+        message="Thank you for taking the assessment. Based on your responses, we noticed that you have been diagnosed with kidney disease. For your safety, we're unable to recommend this medication, as managing kidney disease requires specialized care and consideration."
+        recommendation="We encourage you to consult with your healthcare provider to explore weight loss options that are safe and effective for you."
+        note="Your health and well-being are our top priority!"
       />
     );
   }
@@ -60,7 +60,7 @@ export function PregnancyInput(): JSX.Element {
   return (
     <>
       <QuestionNumHeading questionNum={11}>
-        Are you pregnant or planning to become pregnant? 👶
+        Have you been diagnosed with kidney disease? 🏥
       </QuestionNumHeading>
       <QuestionBoxPara>Select one option</QuestionBoxPara>
       <span className={styles["choose-num"]}>

@@ -20,18 +20,20 @@ export function SuccessScreen(): JSX.Element {
   return (
     <div className={styles["disqualifier"]}>
       <QuestionBoxHeading className={styles["disqualifier-heading"]}>
-        Thank You for Completing Your Assessment! 🎉
+        CONGRATULATIONS! YOU&apos;RE PREQUALIFIED! 🎉
       </QuestionBoxHeading>
       <QuestionBoxPara>
-        We&apos;ve received all your information and are excited to help you on
-        your wellness journey.
+        You&apos;re one step closer to your weight loss journey. Please note
+        that while you haven&apos;t been officially qualified by a physician
+        yet, 95% of people who reach this stage successfully qualify.
       </QuestionBoxPara>
       <QuestionBoxPara>
-        Our team will review your responses and prepare a personalized plan
-        tailored to your needs and goals.
+        Our team will review your responses and create a personalized plan
+        tailored to your unique needs and goals, which will be finalized during
+        your consultation with a provider.
       </QuestionBoxPara>
       <span className={styles["choose-num"]}>
-        Get ready to transform your life with SlimRyze! ✨
+        Get ready to transform with SlimRyze!
       </span>
       <div
         className={classNames(

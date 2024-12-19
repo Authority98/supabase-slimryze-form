@@ -32,7 +32,7 @@ export function EmailInput(): JSX.Element {
 
   return (
     <>
-      <QuestionNumHeading questionNum={5}>
+      <QuestionNumHeading questionNum={4}>
         What&apos;s your email address? 📧
       </QuestionNumHeading>
       <QuestionBoxPara>Enter your email</QuestionBoxPara>
