@@ -27,7 +27,7 @@ export function MedicationsInput(): JSX.Element {
   const errorMsg = error.medications ?? "";
   const [showDisqualifier, setShowDisqualifier] = useState(false);
   const [disqualifierType, setDisqualifierType] = useState<
-    "insulin" | "blood-thinners"
+    "insulin" | "blood-thinners" | "corticosteroids" | "beta-blockers"
   >("insulin");
 
   const medicationOptions = {
@@ -66,19 +66,25 @@ export function MedicationsInput(): JSX.Element {
     }
 
     // Check for disqualifying medications
-    if (selectedOption === "Insulin" && !isAlreadySelected) {
-      setDisqualifierType("insulin");
-      setShowDisqualifier(true);
-      return;
-    }
-
-    if (
-      selectedOption === "Blood thinners (e.g., Warfarin)" &&
-      !isAlreadySelected
-    ) {
-      setDisqualifierType("blood-thinners");
-      setShowDisqualifier(true);
-      return;
+    if (!isAlreadySelected) {
+      switch (selectedOption) {
+        case "Insulin":
+          setDisqualifierType("insulin");
+          setShowDisqualifier(true);
+          return;
+        case "Blood thinners (e.g., Warfarin)":
+          setDisqualifierType("blood-thinners");
+          setShowDisqualifier(true);
+          return;
+        case "Corticosteroids":
+          setDisqualifierType("corticosteroids");
+          setShowDisqualifier(true);
+          return;
+        case "Beta-blockers":
+          setDisqualifierType("beta-blockers");
+          setShowDisqualifier(true);
+          return;
+      }
     }
 
     // Auto proceed if at least one medication is selected

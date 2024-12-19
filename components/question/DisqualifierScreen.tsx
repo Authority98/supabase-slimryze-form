@@ -2,7 +2,11 @@ import { QuestionBoxHeading, QuestionBoxPara, BtnContainer } from "../index";
 import classNames from "classnames";
 import styles from "./Question.module.css";
 
-type MedicationType = "insulin" | "blood-thinners";
+type MedicationType =
+  | "insulin"
+  | "blood-thinners"
+  | "corticosteroids"
+  | "beta-blockers";
 type DisqualifierType = "age" | MedicationType;
 
 type DisqualifierScreenProps = {
@@ -28,6 +32,22 @@ const MESSAGES = {
       "We appreciate your honesty about taking blood thinners. For your safety, we cannot proceed with GLP-1 medications at this time.",
     recommendation:
       "Since you're on blood thinners (like Warfarin), we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine if any adjustments would make GLP-1s a safe option for you.",
+    note: "Your safety is our top priority! 💙",
+  },
+  corticosteroids: {
+    title: "Important Medical Information",
+    message:
+      "We appreciate your honesty about taking corticosteroids. For your safety, we cannot proceed with GLP-1 medications at this time.",
+    recommendation:
+      "Since you're on corticosteroids, we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine if any adjustments would make GLP-1s a safe option for you.",
+    note: "Your safety is our top priority! 💙",
+  },
+  "beta-blockers": {
+    title: "Important Medical Information",
+    message:
+      "We appreciate your honesty about taking beta-blockers. For your safety, we cannot proceed with GLP-1 medications at this time.",
+    recommendation:
+      "Since you're on beta-blockers, we recommend consulting with your healthcare provider about potential interactions with GLP-1 medications. They can help determine if any adjustments would make GLP-1s a safe option for you.",
     note: "Your safety is our top priority! 💙",
   },
   age: {
