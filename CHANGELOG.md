@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.16] - 2024-01-09
+
+### Changed
+
+- Updated all references from "GLP-1s" to "SlimRyze" for consistent branding
+- Updated medication interference message in Question #8
+
 ## [1.0.15] - 2024-01-09
 
 ### Changed

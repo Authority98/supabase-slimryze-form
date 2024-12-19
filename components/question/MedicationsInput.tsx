@@ -129,7 +129,9 @@ export function MedicationsInput(): JSX.Element {
       <QuestionNumHeading questionNum={8}>
         Are you taking any of the following medications? 💊
       </QuestionNumHeading>
-      <QuestionBoxPara>Some meds may interfere with GLP-1s 😬</QuestionBoxPara>
+      <QuestionBoxPara>
+        Some meds may interfere with SlimRyze 😬
+      </QuestionBoxPara>
       <span className={styles["choose-num"]}>Select all that apply</span>
 
       <DropdownSelect className={styles["role-dropdown"]}>
