@@ -1,5 +1,60 @@
 # Changelog
 
+## [1.0.17] - 2024-01-09
+
+### Added
+
+- Added subtitle field to questions table in database
+- Added subtitle input field in form creation/editing interface
+- Added subtitle display in form preview
+- Added keyboard navigation (up/down arrows) for question navigation
+- Added navigation indicator at bottom left of form
+- Added progress line at top of form that animates with question progress
+- Added smooth animations for question transitions
+- Added support for dragging and reordering questions in form creation
+- Added validation for required fields and minimum options
+- Added error messages display for form validation
+- Added automatic progress tracking in form preview
+
+### Changed
+
+- Removed popup for form creation in favor of full-page interface
+- Updated form preview styling to match frontend exactly:
+  - Increased size of radio buttons and checkboxes (from 6px to 8px)
+  - Updated colors to use #00C48F for selected state
+  - Added proper hover states and transitions
+  - Improved spacing and alignment
+  - Updated input field width for better usability
+  - Adjusted OK button size for better proportions
+- Adjusted logo size and positioning (140px × 37px)
+- Improved question transition animations (reduced to 300ms)
+- Updated form creation UI elements to match frontend styling
+- Enhanced form preview layout with centered questions
+- Updated success and disqualified pages with consistent logo placement
+- Improved mobile responsiveness and layout consistency
+
+### Fixed
+
+- Fixed database schema to properly support question types
+- Fixed question type constraint in database
+- Fixed logo display on success/disqualified pages
+- Fixed form submission handling
+- Fixed animation timing for smoother transitions
+- Fixed question transition animations on navigation
+- Fixed form validation for choice questions
+- Fixed error handling in form submission
+- Fixed layout issues in form preview
+- Fixed Supabase authentication and database access
+
+### Technical
+
+- Implemented proper database migrations using Supabase CLI
+- Added TypeScript types for form and question interfaces
+- Improved state management for form creation
+- Enhanced error handling and validation
+- Added proper authentication checks
+- Implemented proper database constraints and relationships
+
 ## [1.0.16] - 2024-01-09
 
 ### Changed

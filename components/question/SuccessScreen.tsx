@@ -1,12 +1,31 @@
-import { BtnContainer } from "../btn-container/BtnContainer";
-import { QuestionBoxHeading } from "../question-box-heading/QuestionBoxHeading";
-import { QuestionBoxPara } from "../question-box-para/QuestionBoxPara";
+import { useQuestions, useSharedStates } from "@/contexts";
 import classNames from "classnames";
+import { BtnContainer, QuestionBoxHeading, QuestionBoxPara } from "../index";
 import styles from "./Question.module.css";
-import { useSharedStates } from "@/contexts";
+import { sendAssessmentEmail } from "@/services/email";
+import { useEffect, useState } from "react";
 
 export function SuccessScreen(): JSX.Element {
   const { setQuestionNum } = useSharedStates();
+  const { state } = useQuestions();
+  const [emailStatus, setEmailStatus] = useState<
+    "sending" | "success" | "error"
+  >("sending");
+
+  useEffect(() => {
+    // Send the assessment email when the success screen is shown
+    const sendEmail = async () => {
+      try {
+        await sendAssessmentEmail(state);
+        setEmailStatus("success");
+      } catch (error) {
+        console.error("Failed to send assessment email:", error);
+        setEmailStatus("error");
+      }
+    };
+
+    sendEmail();
+  }, [state]);
 
   function handleNextSteps() {
     window.location.href = "https://slimryze.com/";
@@ -15,6 +34,20 @@ export function SuccessScreen(): JSX.Element {
   function handleStartOver() {
     // Reset to the first question
     setQuestionNum({ prev: null, now: 0 });
+  }
+
+  function handleRetryEmail() {
+    setEmailStatus("sending");
+    const sendEmail = async () => {
+      try {
+        await sendAssessmentEmail(state);
+        setEmailStatus("success");
+      } catch (error) {
+        console.error("Failed to send assessment email:", error);
+        setEmailStatus("error");
+      }
+    };
+    sendEmail();
   }
 
   return (
@@ -32,9 +65,38 @@ export function SuccessScreen(): JSX.Element {
         tailored to your unique needs and goals, which will be finalized during
         your consultation with a provider.
       </QuestionBoxPara>
-      <span className={styles["choose-num"]}>
-        Get ready to transform with SlimRyze!
-      </span>
+
+      {emailStatus === "sending" && (
+        <span className={styles["choose-num"]}>
+          Sending your assessment details...
+        </span>
+      )}
+
+      {emailStatus === "success" && (
+        <span className={styles["choose-num"]}>
+          We&apos;ve sent your assessment details to {state.email}. Get ready to
+          transform with SlimRyze!
+        </span>
+      )}
+
+      {emailStatus === "error" && (
+        <>
+          <span
+            className={styles["choose-num"]}
+            style={{ color: "var(--error-text-color)" }}
+          >
+            There was an error sending your assessment details.
+          </span>
+          <BtnContainer
+            className={classNames(styles["btn-container"], styles["restart"])}
+            showPressEnter={false}
+            onClick={handleRetryEmail}
+          >
+            Retry Sending Email
+          </BtnContainer>
+        </>
+      )}
+
       <div
         className={classNames(
           styles["disqualifier-button"],

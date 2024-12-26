@@ -1,3 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary-color: #01ae6b;
+    --primary-dark-color: #018f57;
+    --primary-light-color: #01ae6b;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+  }
+}
+
 *,
 *::after,
 *::before {
@@ -9,18 +40,11 @@
 :root {
   --body-background-color: #000;
   --btn-text-color: #fff;
-
   --dropdown-background-color: rgba(255, 255, 255, 0.1);
-
   --error-background-color: rgb(247, 230, 230);
   --error-text-color: rgb(175, 4, 4);
-
   --para-text-color: rgba(255, 255, 255, 0.7);
   --placeholder-color: rgba(255, 255, 255, 0.3);
-
-  --primary-color: #01ae6b;
-  --primary-light-color: #01ae6b;
-  --primary-dark-color: #01ae6b;
 }
 
 html {
@@ -37,6 +61,25 @@ body {
   font-size: 1.6rem;
 }
 
+/* Admin area specific styles */
+.admin-page {
+  transform: scale(1.6);
+  transform-origin: top center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Login page specific styles */
+.admin-page:has(form) {
+  transform-origin: center;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -45,5 +88,126 @@ a {
 @media screen and (max-width: 599px) {
   html {
     font-size: 52%;
+  }
+  .admin-page {
+    transform: scale(1.3);
+  }
+}
+
+/* Question animations */
+.question-slide-in {
+  animation: slide-in-up 0.3s ease-out forwards;
+}
+
+.question-slide-out {
+  animation: slide-out-up 0.3s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out-up {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100vh);
+  }
+}
+
+/* Progress line animation */
+.progress-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(1, 174, 107, 0.3);
+  z-index: 50;
+}
+
+.progress-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.5s ease-out;
+}
+
+/* Navigation indicator */
+.nav-indicator {
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  z-index: 1000;
+}
+
+.nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s ease;
+  border: none;
+  padding: 2px;
+  border-radius: 3px;
+  background-color: transparent;
+  opacity: 0.5;
+}
+
+.nav-arrow:not(:disabled):hover {
+  opacity: 1;
+}
+
+.nav-arrow:active {
+  transform: scale(0.95);
+}
+
+.nav-arrow:focus {
+  outline: none;
+}
+
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-message {
+  position: relative;
+  color: var(--error-text-color);
+  background-color: var(--error-background-color);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  animation: slide-up 0.35s ease-out forwards;
+  width: fit-content;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
